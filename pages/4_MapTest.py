@@ -25,7 +25,7 @@ from streamlit.hello.utils import show_code
 
 def mapping_demo():
     @st.cache_data
-    def from_data_file(filename):
+    def from_data_file():
         url = (
             "https://data.police.uk/api/crimes-street/all-crime?lat=52.629729&lng=-1.131592&date=2023-01"
         )
@@ -36,8 +36,8 @@ def mapping_demo():
         ALL_LAYERS = {
             "Police Data Points": pdk.Layer(
                 "HexagonLayer",
-                data=from_data_file(""),
-                get_position=["longitude", "location.lattitude"],
+                data=from_data_file(),
+                get_position=["longitude", "location[lattitude]"],
                 radius=200,
                 elevation_scale=4,
                 elevation_range=[0, 1000],
