@@ -27,8 +27,9 @@ def mapping_demo():
     @st.cache_data
     def from_data_file(filename):
         url = (
-            "https://data.police.uk/api/crimes-street/all-crime?lat=52.629729&lng=-1.131592&date=2023-01" % filename
+            "https://data.police.uk/api/crimes-street/all-crime?lat=52.629729&lng=-1.131592&date=2023-01"
         )
+        st.write(pd.read_json(url))
         return pd.read_json(url)
 
     try:
