@@ -27,16 +27,16 @@ def mapping_demo():
     @st.cache_data
     def from_data_file(filename):
         url = (
-            "https://data.police.uk/api/crimes-at-location?date=2017-02&lat=52.629729&lng=-1.131592" % filename
+            "https://data.police.uk/api/crimes-street/all-crime?lat=52.629729&lng=-1.131592&date=2023-01" % filename
         )
         return pd.read_json(url)
 
     try:
         ALL_LAYERS = {
-            "Bike Rentals": pdk.Layer(
+            "Police Data Points": pdk.Layer(
                 "HexagonLayer",
-                data=from_data_file("bike_rental_stats.json"),
-                get_position=["lon", "lat"],
+                data=from_data_file(""),
+                get_position=["longitude", "location.lattitude"],
                 radius=200,
                 elevation_scale=4,
                 elevation_range=[0, 1000],
