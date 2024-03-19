@@ -37,7 +37,7 @@ def mapping_demo():
             "Police Data Points": pdk.Layer(
                 "HexagonLayer",
                 data=from_data_file(),
-                get_position=["longitude", 0],
+                get_position=['location'['lattitude'], 'location'['longitude']],
                 radius=200,
                 elevation_scale=4,
                 elevation_range=[0, 1000],
@@ -55,8 +55,8 @@ def mapping_demo():
                 pdk.Deck(
                     map_style=None,
                     initial_view_state={
-                        "latitude": 37.76,
-                        "longitude": -122.4,
+                        "latitude": 55.37,
+                        "longitude": 3.4,
                         "zoom": 11,
                         "pitch": 50,
                     },
