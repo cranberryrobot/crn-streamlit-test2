@@ -35,7 +35,7 @@ def barchart():
 
         return data
 
-    chart_data = from_data_file()
+    chart_data = pd.DataFrame(from_data_file())
     st.write(chart_data)
 
     st.bar_chart(chart_data)
