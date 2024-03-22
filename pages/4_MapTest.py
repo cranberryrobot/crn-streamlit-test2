@@ -26,7 +26,7 @@ from flatten_json import flatten
 
 def mapping_demo():
     @st.cache_data
-    def from_data_file(url=url):
+    def from_data_file(url:str):
 
         data = pd.read_json(url)
 
