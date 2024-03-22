@@ -24,7 +24,7 @@ from flatten_json import flatten
 
 
 
-def mapping_demo():
+def barchart():
     @st.cache_data
     def from_data_file():
 
@@ -39,3 +39,10 @@ def mapping_demo():
     st.write(chart_data)
 
     st.bar_chart(chart_data)
+
+
+st.set_page_config(page_title="Bar Chart Test", page_icon="📈")
+st.markdown("# Bar Chart Test")
+st.sidebar.header("Bar Charts")
+
+barchart()
