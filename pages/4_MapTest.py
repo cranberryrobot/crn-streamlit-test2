@@ -51,7 +51,7 @@ def mapping_demo():
             "Police Data Points": pdk.Layer(
                 "ScatterplotLayer",
                 data=from_data_file(),
-                get_position=["longitude", "latitude"],
+                get_position='[longitude, latitude]',
                 get_color=[200, 30, 0, 160],
                 get_radius=1,
                 radius_scale=0.05,
