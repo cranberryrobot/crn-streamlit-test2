@@ -33,6 +33,8 @@ def mapping_demo():
 
         data = pd.json_normalize(pd.read_json(url))
 
+        st.write(data)
+
 
         return data
 
