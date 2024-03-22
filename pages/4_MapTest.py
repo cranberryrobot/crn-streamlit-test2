@@ -53,7 +53,7 @@ def mapping_demo():
                 data=from_data_file(),
                 get_position=["longitude", "latitude"],
                 get_color=[200, 30, 0, 160],
-                get_radius="[exits]",
+                get_radius=1,
                 radius_scale=0.05,
             )
         }
