@@ -38,7 +38,7 @@ def barchart():
     chart_data = pd.DataFrame(from_data_file())
     st.write(chart_data)
 
-    st.bar_chart(chart_data, x='location_type', y='location_type')
+    st.bar_chart(chart_data, x='location_type', y='count()')
 
 
 st.set_page_config(page_title="Bar Chart Test", page_icon="📈")
