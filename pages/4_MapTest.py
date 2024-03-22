@@ -41,11 +41,12 @@ def barchart():
 
     # st.bar_chart(chart_data, x='location_type', y='count()')
 
-    alt.Chart(chart_data).mark_bar().encode(
+    chart = alt.Chart(chart_data).mark_bar().encode(
         x='location_type',
         y='count()',
     )
 
+    st.chart(chart)
 
 st.set_page_config(page_title="Bar Chart Test", page_icon="📈")
 st.markdown("# Bar Chart Test")
