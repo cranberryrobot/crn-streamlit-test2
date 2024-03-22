@@ -49,13 +49,12 @@ def mapping_demo():
     try:
         ALL_LAYERS = {
             "Police Data Points": pdk.Layer(
-                "HexagonLayer",
+                "ScatterplotLayer",
                 data=from_data_file(),
-                get_position=['longitude', 'latitude'],
-                radius=200,
-                elevation_scale=4,
-                elevation_range=[0, 1000],
-                extruded=True,
+                get_position=["longitude", "latitude"],
+                get_color=[200, 30, 0, 160],
+                get_radius="[exits]",
+                radius_scale=0.05,
             )
         }
         st.sidebar.markdown("### Map Layers")
