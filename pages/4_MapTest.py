@@ -42,7 +42,7 @@ def barchart():
     # st.bar_chart(chart_data, x='location_type', y='count()')
 
     alt.Chart(chart_data).mark_bar().encode(
-        alt.X("location_type", bin=True),
+        x='location_type',
         y='count()',
     )
 
