@@ -35,7 +35,7 @@ def mapping_demo():
 
         flattened_data = flatten(data) #[flatten(d) for d in data]
 
-        data = pd.DataFrame(flattened_data)
+        data = pd.DataFrame(flattened_data, index=[0])
 
         st.write(data)
         return data
