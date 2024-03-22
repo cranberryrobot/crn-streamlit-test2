@@ -32,14 +32,14 @@ def barchart():
         url = ("https://data.police.uk/api/crimes-street/all-crime?lat=52.629729&lng=-1.131592&date=2023-01")
         data = pd.read_json(url)
         df = pd.DataFrame(data)
-        data = df.join(pd.json_normalize(df.location)).drop(columns=['location'])
+        df = df.join(pd.json_normalize(df.location)).drop(columns=['location'])
 
         st.write(df.columns.tolist())
 
 
         df['police_force'] = pd.json_normalize(pd.read_json(f"https://data.police.uk/api/locate-neighbourhood?q={df['longitude']},{df['latitude']}"))
 
-        return data
+        return df
 
     chart_data = pd.DataFrame(from_data_file())
     st.write(chart_data)
