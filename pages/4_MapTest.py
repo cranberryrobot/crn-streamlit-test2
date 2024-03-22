@@ -34,6 +34,10 @@ def barchart():
         df = pd.DataFrame(data)
         data = df.join(pd.json_normalize(df.location)).drop(columns=['location'])
 
+
+        for latitude, longitude in df:
+            df.join(json_normalize(pd.read_json(f"https://data.police.uk/api/locate-neighbourhood?q={latitude},{longitude}")))
+
         return data
 
     chart_data = pd.DataFrame(from_data_file())
