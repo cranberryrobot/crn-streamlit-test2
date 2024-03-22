@@ -33,12 +33,12 @@ def mapping_demo():
 
         data = pd.read_json(url)
 
-        data = pd.DataFrame(data)
+        df = pd.DataFrame(data)
 
-        st.write("Before flattening")
-        st.write(data)
+        st.write("Before flattening df")
+        st.write(df)
 
-        data = pd.json_normalize(data)
+        data = df.join(pd.json_normalize(df.location)).drop(columns=['location'])
 
         st.write("After flattening")
         st.write(data)
