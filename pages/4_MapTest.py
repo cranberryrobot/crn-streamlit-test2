@@ -32,7 +32,9 @@ def mapping_demo():
         )
 
         data = pd.read_json(url)
-        print(data)
+
+        data = pd.DataFrame(data)
+
         st.write("Before flattening")
         st.write(data)
 
