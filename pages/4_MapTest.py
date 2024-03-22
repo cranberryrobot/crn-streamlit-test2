@@ -26,10 +26,7 @@ from flatten_json import flatten
 
 def mapping_demo():
     @st.cache_data
-    def from_data_file():
-        url = (
-            "https://data.police.uk/api/crimes-street/all-crime?lat=52.629729&lng=-1.131592&date=2023-01"
-        )
+    def from_data_file(url=url):
 
         data = pd.read_json(url)
 
@@ -48,7 +45,7 @@ def mapping_demo():
 
     try:
        
-       st.write(from_data_file())
+       st.write(from_data_file(url="https://data.police.uk/api/crimes-street/all-crime?lat=52.629729&lng=-1.131592&date=2023-01"))
 
        st.pydeck_chart(pdk.Deck(
         map_style=None,
