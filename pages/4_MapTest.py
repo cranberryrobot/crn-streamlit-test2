@@ -19,6 +19,7 @@ import pydeck as pdk
 
 import streamlit as st
 from streamlit.hello.utils import show_code
+from flatten_json import flatten
 
 
 
@@ -29,8 +30,12 @@ def mapping_demo():
         url = (
             "https://data.police.uk/api/crimes-street/all-crime?lat=52.629729&lng=-1.131592&date=2023-01"
         )
-        st.write(pd.read_json(url))
-        return pd.read_json(url)
+
+        data = pd.read_json(url)
+
+        st.write(data)
+        data = flatten(data)
+        return data
 
     try:
         ALL_LAYERS = {
