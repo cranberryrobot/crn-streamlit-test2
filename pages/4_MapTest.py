@@ -35,7 +35,7 @@ def barchart():
         df = df.join(pd.json_normalize(df.location)).drop(columns=['location'])
 
         st.write(df.columns.tolist())
-        df['police_force.api_url'] = str("https://data.police.uk/api/locate-neighbourhood?q="+df['longitude'].str.cat(df['latitude']))
+        df['police_force.api_url'] = "https://data.police.uk/api/locate-neighbourhood?q=".cat(df['longitude'].str.cat(df['latitude'], sep = ","))
 
         return df
 
