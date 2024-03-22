@@ -33,8 +33,11 @@ def mapping_demo():
 
         data = pd.read_json(url)
 
+        flattened_data = [flatten(d) for d in data]
+
+        data = pd.DataFrame(flattened_data)
+
         st.write(data)
-        data = flatten(data)
         return data
 
     try:
@@ -42,7 +45,7 @@ def mapping_demo():
             "Police Data Points": pdk.Layer(
                 "HexagonLayer",
                 data=from_data_file(),
-                get_position=['location'[0], 'location'[0]],
+                get_position=['location_lattitude', 'location_longitude'],
                 radius=200,
                 elevation_scale=4,
                 elevation_range=[0, 1000],
