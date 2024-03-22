@@ -31,7 +31,7 @@ def mapping_demo():
             "https://data.police.uk/api/crimes-street/all-crime?lat=52.629729&lng=-1.131592&date=2023-01"
         )
 
-        data = pd.read_json(url)
+        data = pd.DataFrame.to_dict(pd.read_json(url))
 
         flattened_data = [flatten(d) for d in data]
 
