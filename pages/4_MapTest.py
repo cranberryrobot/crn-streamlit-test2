@@ -46,7 +46,7 @@ def barchart():
         y='count()',
     )
 
-    st.chart(chart)
+    st.altair_chart(chart)
 
 st.set_page_config(page_title="Bar Chart Test", page_icon="📈")
 st.markdown("# Bar Chart Test")
