@@ -48,7 +48,7 @@ def mapping_demo():
 
     try:
        
-       st.write(from_data_file()[longitude, latitude])
+       st.write(from_data_file())
 
        st.pydeck_chart(pdk.Deck(
         map_style=None,
