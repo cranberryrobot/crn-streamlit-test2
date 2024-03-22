@@ -20,6 +20,7 @@ import pydeck as pdk
 import streamlit as st
 from streamlit.hello.utils import show_code
 from flatten_json import flatten
+import altair as alt
 
 
 
@@ -38,7 +39,12 @@ def barchart():
     chart_data = pd.DataFrame(from_data_file())
     st.write(chart_data)
 
-    st.bar_chart(chart_data, x='location_type', y='count()')
+    # st.bar_chart(chart_data, x='location_type', y='count()')
+
+    alt.Chart(chart_data).mark_bar().encode(
+        alt.X("location_type", bin=True),
+        y='count()',
+    )
 
 
 st.set_page_config(page_title="Bar Chart Test", page_icon="📈")
