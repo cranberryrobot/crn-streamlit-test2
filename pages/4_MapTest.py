@@ -33,10 +33,11 @@ def mapping_demo():
 
         data = pd.DataFrame.to_dict(pd.read_json(url))
 
+        show_code(pd.read_json(url))
+
         flattened_data = flatten(data) #[flatten(d) for d in data]
 
         data = pd.DataFrame(flattened_data, index=[0])
-
         st.write(data)
         return data
 
