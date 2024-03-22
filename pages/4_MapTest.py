@@ -36,10 +36,8 @@ def barchart():
 
         st.write(df.columns.tolist())
         df['police_force.api_url'] = df.agg(lambda x: f"https://data.police.uk/api/locate-neighbourhood?q={x['longitude']},{x['latitude']}", axis=1)
+        df['police_force'] = df.apply(lambda x: pd.read_json(x['police_force.api_url']), axis=1)
 
-        for pf in df['police_force.api_url']:
-            df['police_force'].append(pd.read_json(pf))
-            
         return df
 
     chart_data = pd.DataFrame(from_data_file())
