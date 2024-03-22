@@ -47,37 +47,27 @@ def mapping_demo():
         return data
 
     try:
-        ALL_LAYERS = {
-            "Police Data Points": pdk.Layer(
-                "ScatterplotLayer",
-                data=from_data_file(),
-                get_position='[longitude, latitude]',
-                get_color=[200, 30, 0, 160],
-                get_radius=1,
-                radius_scale=0.05,
-            )
-        }
-        st.sidebar.markdown("### Map Layers")
-        selected_layers = [
-            layer
-            for layer_name, layer in ALL_LAYERS.items()
-            if st.sidebar.checkbox(layer_name, True)
-        ]
-        if selected_layers:
-            st.pydeck_chart(
-                pdk.Deck(
-                    map_style=None,
-                    initial_view_state={
-                        "latitude": 55.37,
-                        "longitude": 3.4,
-                        "zoom": 11,
-                        "pitch": 50,
-                    },
-                    layers=selected_layers,
-                )
-            )
-        else:
-            st.error("Please choose at least one layer above.")
+       st.pydeck_chart(pdk.Deck(
+        map_style=None,
+        initial_view_state=pdk.ViewState(
+        latitude=37.76,
+        longitude=-122.4,
+        zoom=11,
+        pitch=50,
+    ),
+    layers=[
+        pdk.Layer(
+           'HexagonLayer',
+           data=from_data_file(),
+           get_position='[longitude, latitude]',
+           radius=200,
+           elevation_scale=4,
+           elevation_range=[0, 1000],
+           pickable=True,
+           extruded=True,
+        ),
+    ],
+))
     except URLError as e:
         st.error(
             """
