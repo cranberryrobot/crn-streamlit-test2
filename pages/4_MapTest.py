@@ -51,6 +51,14 @@ def barchart():
 
     st.altair_chart(chart)
 
+with st.form("Location_Form"):
+   long = st.number_input("longtude")
+   lat = st.number_input("latitude")
+
+   submitted = st.form_submit_button("Submit")
+   if submitted:
+       barchart()
+
 st.set_page_config(page_title="Bar Chart Test", page_icon="📈")
 st.markdown("# Bar Chart Test")
 st.sidebar.header("Bar Charts")
