@@ -25,12 +25,15 @@ import altair as alt
 
 
 
-def barchart():
+def barchart(long=52.62, lat=-1.32):
     @st.experimental_memo
     def from_data_file():
 
-        url = ("https://data.police.uk/api/crimes-street/all-crime?lat=52.629729&lng=-1.131592&date=2023-01")
-        data = pd.read_json(url)
+        url = (f"https://data.police.uk/api/crimes-street/all-crime?lat={lat}&lng={long}")
+        try:
+            data = pd.read_json(url)
+        except URLError:
+            st.error("The data with the longitudes and lattitudes indicated could not be found.")
         df = pd.DataFrame(data)
         df = df.join(pd.json_normalize(df.location)).drop(columns=['location'])
         df['police_force_api_url'] = df.agg(lambda x: f"https://data.police.uk/api/locate-neighbourhood?q={x['latitude']},{x['longitude']}", axis=1)
@@ -62,5 +65,3 @@ with st.form("Location_Form"):
 st.set_page_config(page_title="Bar Chart Test", page_icon="📈")
 st.markdown("# Bar Chart Test")
 st.sidebar.header("Bar Charts")
-
-barchart()
