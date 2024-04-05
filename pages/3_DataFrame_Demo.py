@@ -16,6 +16,7 @@ from urllib.error import URLError
 
 import altair as alt
 import pandas as pd
+import os
 
 import streamlit as st
 from streamlit.hello.utils import show_code
@@ -41,7 +42,7 @@ def data_frame_demo():
             st.error("Please select at least one country.")
         else:
             data = df.loc[countries]
-            print(data.head())
+            os.write(data.head())
             if group_countries:
                 datb = data[data["Region"].isin(group_countries)]
                 st.write(datb)
