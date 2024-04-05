@@ -42,10 +42,9 @@ def data_frame_demo():
             st.error("Please select at least one country.")
         else:
             data = df.loc[countries]
-            os.write(1, bytes(str(list(data)), 'utf-8'))
             if group_countries:
                 datb = data[data.index.isin(group_countries)].agg('sum')
-                datb = datb.rename(index={last: 'Grouped countries'})
+                datb = datb.rename(index={0: 'Grouped countries'})
                 data.append(datb)
                 
             data /= 1000000.0
