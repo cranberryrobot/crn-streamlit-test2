@@ -36,14 +36,15 @@ def data_frame_demo():
         group_countries = st.multiselect(
             "Choose countries to group together", list(df.index), []
         )
-
-        if group_countries:
-            st.write(df)
         
         if not countries:
             st.error("Please select at least one country.")
         else:
             data = df.loc[countries]
+            if group_countries:
+                datb = data[data["Region"].isin(group_countries)]
+                st.write(datb)
+                
             data /= 1000000.0
             st.write("### Gross Agricultural Production ($B)", data.sort_index())
 
