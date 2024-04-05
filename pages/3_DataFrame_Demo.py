@@ -42,7 +42,7 @@ def data_frame_demo():
             st.error("Please select at least one country.")
         else:
             data = df.loc[countries]
-            os.write(1, str(data.head()))
+            os.write(1, b"String: "+str(data.head()))
             if group_countries:
                 datb = data[data["Region"].isin(group_countries)]
                 st.write(datb)
