@@ -44,8 +44,9 @@ def data_frame_demo():
             data = df.loc[countries]
             os.write(1, bytes(str(list(data)), 'utf-8'))
             if group_countries:
-                datb = data[data.index.isin(group_countries)]
-                st.write(datb)
+                datb = data[data.index.isin(group_countries)].agg('sum')
+                datb = datb.rename(index={last: 'Grouped countries'})
+                data.append(datb)
                 
             data /= 1000000.0
             st.write("### Gross Agricultural Production ($B)", data.sort_index())
