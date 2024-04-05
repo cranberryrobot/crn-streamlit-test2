@@ -33,6 +33,13 @@ def data_frame_demo():
         countries = st.multiselect(
             "Choose countries", list(df.index), ["China", "United States of America"]
         )
+        group_countries = st.multiselect(
+            "Choose countries to group together", list(df.index), []
+        )
+
+        if group_countries:
+            st.write(df)
+        
         if not countries:
             st.error("Please select at least one country.")
         else:
