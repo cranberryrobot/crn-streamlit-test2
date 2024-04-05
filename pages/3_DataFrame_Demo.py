@@ -44,7 +44,7 @@ def data_frame_demo():
             data = df.loc[countries]
             os.write(1, bytes(str(list(data)), 'utf-8'))
             if group_countries:
-                datb = data[data[0].isin(group_countries)]
+                datb = data[data.index.isin(group_countries)]
                 st.write(datb)
                 
             data /= 1000000.0
