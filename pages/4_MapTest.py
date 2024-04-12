@@ -21,6 +21,7 @@ import streamlit as st
 from streamlit.hello.utils import show_code
 from flatten_json import flatten
 import altair as alt
+import requests
 
 
 
@@ -32,7 +33,8 @@ def barchart(long, lat):
         url = (f"https://data.police.uk/api/crimes-street/all-crime?lat={lat}&lng={long}")
         try:
             data = pd.read_json(url)
-            st.write(data)
+            response = json.loads(requests.get(url).text)
+            st.write(response)
             df = data
             #pd.DataFrame(data)
             #df['police_force_api_url'] = df.agg(lambda x: f"https://data.police.uk/api/locate-neighbourhood?q={x['latitude']},{x['longitude']}", axis=1)
