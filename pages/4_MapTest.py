@@ -51,7 +51,7 @@ def barchart(long, lat):
         except URLError or AttributeError:
             st.error("The data with the longitudes and lattitudes indicated could not be found, or an error occurred.")
 
-    chart_data = pd.DataFrame(from_data_file()).reset_index()
+    chart_data = pd.DataFrame(from_data_file())
     st.write(chart_data)
 
     # st.bar_chart(chart_data, x='location_type', y='count()')
