@@ -25,7 +25,7 @@ import altair as alt
 
 
 
-def barchart(long=52.62, lat=-1.32):
+def barchart(long, lat):
     @st.experimental_memo
     def from_data_file():
 
@@ -63,5 +63,5 @@ with st.form("Location_Form"):
 
    submitted = st.form_submit_button("Submit")
    if submitted:
-       barchart(lat=form_lat, long=form_long)
+       barchart(form_long, form_lat)
 
