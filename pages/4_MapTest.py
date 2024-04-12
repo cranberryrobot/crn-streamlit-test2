@@ -41,7 +41,7 @@ def barchart(long, lat):
             st.write(df.columns.tolist())
             # df['police_force'] = df.apply(lambda x: pd.read_json(x['police_force_api_url']), axis=1, index=[0])
             return df
-        except Error:
+        except URLError:
             st.error("The data with the longitudes and lattitudes indicated could not be found, or an error occurred.")
 
     chart_data = pd.DataFrame(from_data_file())
