@@ -27,7 +27,6 @@ import json
 @st.experimental_memo
 def read_police_force_url(police_force_url):
     pf = pd.read_json(police_force_url)
-    pf = pf['force']
     return pf
 
 
@@ -46,7 +45,7 @@ def barchart(long, lat):
             
             df = df.join(pd.json_normalize(df.location))
             df['police_force_api_url'] = df.agg(lambda x: f"https://data.police.uk/api/locate-neighbourhood?q={x['latitude']},{x['longitude']}", axis=1)
-            df['police_force'] = df.apply(lambda x: read_police_force_url(x['police_force_api_url']))
+            df['police_force'] = df.apply(lambda x: read_police_force_url(x['police_force_api_url']), axis=1)
             st.write(df.columns.tolist())
         except URLError or AttributeError:
             st.error("The data with the longitudes and lattitudes indicated could not be found, or an error occurred.")
