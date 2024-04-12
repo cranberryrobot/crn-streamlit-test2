@@ -33,7 +33,7 @@ def barchart(long=52.62, lat=-1.32):
         try:
             data = pd.read_json(url)
             df = pd.DataFrame(data)
-            df = df.join(pd.json_normalize(df.location)).drop(columns=['location'])
+            df = df.join(pd.json_normalize(df.location))
             df['police_force_api_url'] = df.agg(lambda x: f"https://data.police.uk/api/locate-neighbourhood?q={x['latitude']},{x['longitude']}", axis=1)
             st.write(df.columns.tolist())
             # df['police_force'] = df.apply(lambda x: pd.read_json(x['police_force_api_url']), axis=1, index=[0])
@@ -53,6 +53,10 @@ def barchart(long=52.62, lat=-1.32):
 
     st.altair_chart(chart)
 
+st.set_page_config(page_title="Bar Chart Test", page_icon="📊")
+st.markdown("# Bar Chart Test")
+st.sidebar.header("Bar Charts")
+
 with st.form("Location_Form"):
    long = st.number_input("longtude")
    lat = st.number_input("latitude")
@@ -61,6 +65,3 @@ with st.form("Location_Form"):
    if submitted:
        barchart()
 
-st.set_page_config(page_title="Bar Chart Test", page_icon="📈")
-st.markdown("# Bar Chart Test")
-st.sidebar.header("Bar Charts")
