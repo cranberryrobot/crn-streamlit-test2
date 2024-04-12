@@ -63,5 +63,6 @@ with st.form("Location_Form"):
 
    submitted = st.form_submit_button("Submit")
    if submitted:
+       st.write(f"{form_long}, {form_lat}")
        barchart(form_long, form_lat)
 
