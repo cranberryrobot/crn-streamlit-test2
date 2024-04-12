@@ -46,7 +46,7 @@ def barchart(long, lat):
             
             df = df.join(pd.json_normalize(df.location))
             df['police_force_api_url'] = df.agg(lambda x: f"https://data.police.uk/api/locate-neighbourhood?q={x['latitude']},{x['longitude']}", axis=1)
-            df['police_force'] = df.agg(lambda x: "Northumbria", axis=1)
+            #df['police_force'] = df.agg(lambda x: "Northumbria", axis=1)
             st.write(df.columns.tolist())
         except URLError or AttributeError:
             st.error("The data with the longitudes and lattitudes indicated could not be found, or an error occurred.")
@@ -57,8 +57,8 @@ def barchart(long, lat):
     # st.bar_chart(chart_data, x='location_type', y='count()')
 
     chart = alt.Chart(chart_data).mark_bar().encode(
-        x='police_force',
-        y='count()',
+        x="police_force",
+        y="count()",
     )
 
     st.altair_chart(chart)
