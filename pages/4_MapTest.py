@@ -58,10 +58,10 @@ st.markdown("# Bar Chart Test")
 st.sidebar.header("Bar Charts")
 
 with st.form("Location_Form"):
-   long = st.number_input("longtude")
-   lat = st.number_input("latitude")
+   form_long = st.number_input("longtude")
+   form_lat = st.number_input("latitude")
 
    submitted = st.form_submit_button("Submit")
    if submitted:
-       barchart()
+       barchart(lat=form_lat, long=form_long)
 
