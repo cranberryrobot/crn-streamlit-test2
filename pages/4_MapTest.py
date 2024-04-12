@@ -37,7 +37,7 @@ def barchart(long, lat):
             data = pd.read_json(url)
             df = pd.DataFrame(data)
             if df.empty:
-                raise AttributeError("The data was returned blank")
+                st.error("This data is blank. Maybe the coordinates are no good?")
             
             
             df = df.join(pd.json_normalize(df.location))
