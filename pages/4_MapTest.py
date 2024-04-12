@@ -26,7 +26,7 @@ import json
 
 @st.experimental_memo
 def read_police_force_url(police_force_url):
-    pf = pd.read_json(police_force_url)
+    pf = pd.DataFrame(pd.read_json(police_force_url))
     return pf
 
 
