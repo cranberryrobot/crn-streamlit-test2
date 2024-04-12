@@ -33,6 +33,7 @@ def read_police_force_url(x):
 
 
 def barchart(long, lat):
+    
     @st.experimental_memo
     def from_data_file():
 
