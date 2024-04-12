@@ -57,7 +57,7 @@ def barchart(long, lat):
     # st.bar_chart(chart_data, x='location_type', y='count()')
 
     chart = alt.Chart(chart_data).mark_bar().encode(
-        x='location_type',
+        x='police_force',
         y='count()',
     )
 
