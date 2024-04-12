@@ -35,10 +35,11 @@ def barchart(long, lat):
 
         try:
             data = pd.read_json(url)
-            if data == []:
+            df = pd.DataFrame(data)
+            if df.empty:
                 raise AttributeError("The data was returned blank")
             
-            df = pd.DataFrame(data)
+            
             df = df.join(pd.json_normalize(df.location))
             df['police_force_api_url'] = df.agg(lambda x: f"https://data.police.uk/api/locate-neighbourhood?q={x['latitude']},{x['longitude']}", axis=1)
             st.write(df.columns.tolist())
