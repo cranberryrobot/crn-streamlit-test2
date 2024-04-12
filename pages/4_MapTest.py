@@ -32,13 +32,14 @@ def barchart(long=52.62, lat=-1.32):
         url = (f"https://data.police.uk/api/crimes-street/all-crime?lat={lat}&lng={long}")
         try:
             data = pd.read_json(url)
-            df = pd.DataFrame(data)
+            df = data
+            #pd.DataFrame(data)
             #df['police_force_api_url'] = df.agg(lambda x: f"https://data.police.uk/api/locate-neighbourhood?q={x['latitude']},{x['longitude']}", axis=1)
             st.write(df.columns.tolist())
             # df['police_force'] = df.apply(lambda x: pd.read_json(x['police_force_api_url']), axis=1, index=[0])
             return df
-        except URLError:
-            st.error("The data with the longitudes and lattitudes indicated could not be found.")
+        except Error:
+            st.error("The data with the longitudes and lattitudes indicated could not be found, or an error occurred.")
 
     chart_data = pd.DataFrame(from_data_file())
     st.write(chart_data)
