@@ -26,6 +26,7 @@ import json
 
 @st.experimental_memo
 def read_police_force_url(x):
+    pf = pd.read_json(x)
     pf = pf['force']
     return pf
 
