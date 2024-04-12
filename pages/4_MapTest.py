@@ -31,7 +31,8 @@ def barchart(long, lat):
     @st.experimental_memo
     def from_data_file():
 
-        url = (f"https://data.police.uk/api/crimes-street/all-crime?lat=55.00&lng=-1.55")
+        url = (f"https://data.police.uk/api/crimes-street/all-crime?lat={lat}&lng={long}")
+        st.write(url)
 
         try:
             data = pd.read_json(url)
