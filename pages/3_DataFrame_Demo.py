@@ -16,6 +16,7 @@ from urllib.error import URLError
 
 import altair as alt
 import pandas as pd
+import os
 
 import streamlit as st
 from streamlit.hello.utils import show_code
@@ -36,14 +37,15 @@ def data_frame_demo():
         group_countries = st.multiselect(
             "Choose countries to group together", list(df.index), []
         )
-
-        if group_countries:
-            st.write(df)
         
         if not countries:
             st.error("Please select at least one country.")
         else:
             data = df.loc[countries]
+            if group_countries:
+                datb = data[data.index.isin(group_countries)].agg('sum').rename(index={0: 'Grouped countries'})
+                data = pd.concat([data, datb])
+                
             data /= 1000000.0
             st.write("### Gross Agricultural Production ($B)", data.sort_index())
 
