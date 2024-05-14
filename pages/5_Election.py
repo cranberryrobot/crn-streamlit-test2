@@ -66,7 +66,7 @@ def election_data():
         ward_list = ward_list[ward_list.DISTRICTNAME==selected_district]
         ward_list = ward_list[["WARDNAME"]]
     
-    selected_ward = st.selectbox("Ward or division", ward_list, index=None, placeholder="Search for a ward or division...")
+    selected_ward = st.selectbox("Ward", ward_list, index=None, placeholder="Search for a ward or division...")
 
     #ward_list = ward_list[["DISTRICTNAME"]=selected_district]
 
